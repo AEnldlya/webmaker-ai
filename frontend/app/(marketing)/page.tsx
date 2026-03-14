@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, Globe, Zap, Shield } from 'lucide-react';
+import { ArrowRight, Sparkles, Globe, Zap, Shield, Scissors, UtensilsCrossed, Wrench, Stethoscope, ShoppingBag, Coffee } from 'lucide-react';
 
 export default function HomePage() {
   return (
@@ -135,8 +135,119 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Examples of Our Work */}
       <section className="py-20 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              className="text-amber-600 font-medium text-sm uppercase tracking-wider"
+            >
+              Portfolio
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-4xl font-bold text-warm-gray-900 mt-3 mb-4 font-serif"
+            >
+              Examples of Our Work
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-warm-gray-600 text-lg max-w-2xl mx-auto"
+            >
+              Click any icon to explore live websites we've built for local businesses
+            </motion.p>
+          </div>
+
+          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {[
+              { 
+                icon: Scissors, 
+                title: 'Hair Salon', 
+                desc: 'Summer Street Hair Studio',
+                url: 'https://summer-street-salon.vercel.app',
+                color: 'from-rose-400 to-pink-500',
+                bgColor: 'bg-rose-50',
+                borderColor: 'border-rose-200'
+              },
+              { 
+                icon: UtensilsCrossed, 
+                title: 'Restaurant', 
+                desc: 'Bella Vista Bistro',
+                url: 'https://example-restaurant.vercel.app',
+                color: 'from-amber-400 to-orange-500',
+                bgColor: 'bg-amber-50',
+                borderColor: 'border-amber-200'
+              },
+              { 
+                icon: Wrench, 
+                title: 'Plumber', 
+                desc: 'Quick Fix Plumbing',
+                url: 'https://example-plumber.vercel.app',
+                color: 'from-blue-400 to-cyan-500',
+                bgColor: 'bg-blue-50',
+                borderColor: 'border-blue-200'
+              },
+              { 
+                icon: Stethoscope, 
+                title: 'Medical', 
+                desc: 'CareFirst Clinic',
+                url: 'https://example-medical.vercel.app',
+                color: 'from-emerald-400 to-teal-500',
+                bgColor: 'bg-emerald-50',
+                borderColor: 'border-emerald-200'
+              },
+              { 
+                icon: ShoppingBag, 
+                title: 'Retail', 
+                desc: 'Urban Boutique',
+                url: 'https://example-retail.vercel.app',
+                color: 'from-violet-400 to-purple-500',
+                bgColor: 'bg-violet-50',
+                borderColor: 'border-violet-200'
+              },
+              { 
+                icon: Coffee, 
+                title: 'Café', 
+                desc: 'Morning Brew Coffee',
+                url: 'https://example-cafe.vercel.app',
+                color: 'from-amber-600 to-yellow-500',
+                bgColor: 'bg-amber-50',
+                borderColor: 'border-amber-300'
+              },
+            ].map((example, i) => (
+              <motion.a
+                key={i}
+                href={example.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 + 0.3, duration: 0.5 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className={`${example.bgColor} ${example.borderColor} border-2 rounded-2xl p-6 text-center cursor-pointer transition-all duration-300 hover:shadow-lg group`}
+              >
+                <div className={`w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br ${example.color} flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow`}>
+                  <example.icon className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold text-warm-gray-900 mb-1 font-serif">{example.title}</h3>
+                <p className="text-sm text-warm-gray-600">{example.desc}</p>
+                <div className="mt-3 text-xs text-amber-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  View Live Site →
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 bg-warm-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="retro-card p-12">
             <div className="grid md:grid-cols-4 gap-8 text-center">

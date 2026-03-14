@@ -29,10 +29,10 @@ const transactions = [
 
 export default function FinancialsPage() {
   return (
-    <div className="p-8">
+    <div className="p-8 bg-cream min-h-screen">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white">Financials</h1>
-        <p className="text-gray-400 mt-1">Track your revenue and expenses</p>
+        <h1 className="text-3xl font-bold text-warm-gray-900 font-serif">Financials</h1>
+        <p className="text-warm-gray-600 mt-1">Track your revenue and expenses</p>
       </div>
 
       {/* Stats */}
@@ -43,22 +43,22 @@ export default function FinancialsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className="bg-gray-800 p-6 rounded-2xl border border-gray-700"
+            className="retro-card p-6 hover:shadow-warm-lg transition-shadow"
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-400 text-sm">{stat.name}</p>
-                <p className="text-2xl font-bold text-white mt-1">{stat.value}</p>
+                <p className="text-warm-gray-500 text-sm">{stat.name}</p>
+                <p className="text-2xl font-bold text-warm-gray-900 mt-1 font-serif">{stat.value}</p>
               </div>
-              <div className="bg-primary-600/20 p-3 rounded-xl">
-                <stat.icon className="h-6 w-6 text-primary-500" />
+              <div className="bg-amber-100 p-3 rounded-xl border border-amber-200">
+                <stat.icon className="h-6 w-6 text-amber-600" />
               </div>
             </div>
             <div className="mt-4">
-              <span className={`text-sm font-medium ${stat.positive ? 'text-green-400' : 'text-red-400'}`}>
+              <span className={`text-sm font-medium ${stat.positive ? 'text-sage' : 'text-terracotta'}`}>
                 {stat.change}
               </span>
-              <span className="text-gray-500 text-sm ml-2">from last month</span>
+              <span className="text-warm-gray-400 text-sm ml-2">from last month</span>
             </div>
           </motion.div>
         ))}
@@ -69,21 +69,21 @@ export default function FinancialsPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="bg-gray-800 p-6 rounded-2xl border border-gray-700 mb-8"
+        className="retro-card p-6 mb-8"
       >
-        <h2 className="text-xl font-semibold text-white mb-6">Revenue vs Expenses</h2>
+        <h2 className="text-xl font-semibold text-warm-gray-900 mb-6 font-serif">Revenue vs Expenses</h2>
         <div className="h-80">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={revenueData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-              <XAxis dataKey="name" stroke="#9CA3AF" />
-              <YAxis stroke="#9CA3AF" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" />
+              <XAxis dataKey="name" stroke="#78716c" />
+              <YAxis stroke="#78716c" />
               <Tooltip
-                contentStyle={{ backgroundColor: '#1F2937', border: 'none', borderRadius: '8px' }}
-                labelStyle={{ color: '#F3F4F6' }}
+                contentStyle={{ backgroundColor: '#fffefb', border: '1px solid #e7e5e4', borderRadius: '12px' }}
+                labelStyle={{ color: '#1c1917' }}
               />
-              <Bar dataKey="revenue" fill="#3B82F6" />
-              <Bar dataKey="expenses" fill="#EF4444" />
+              <Bar dataKey="revenue" fill="#d97706" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="expenses" fill="#c65d3b" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -94,19 +94,19 @@ export default function FinancialsPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className="bg-gray-800 rounded-2xl border border-gray-700"
+        className="retro-card overflow-hidden"
       >
-        <div className="p-6 border-b border-gray-700">
-          <h2 className="text-xl font-semibold text-white">Recent Transactions</h2>
+        <div className="p-6 border-b border-warm-gray-200 bg-warm-white">
+          <h2 className="text-xl font-semibold text-warm-gray-900 font-serif">Recent Transactions</h2>
         </div>
-        <div className="divide-y divide-gray-700">
+        <div className="divide-y divide-warm-gray-200 bg-warm-white">
           {transactions.map((tx) => (
-            <div key={tx.id} className="p-6 flex items-center justify-between">
+            <div key={tx.id} className="p-6 flex items-center justify-between hover:bg-cream transition-colors">
               <div>
-                <p className="text-white font-medium">{tx.description}</p>
-                <p className="text-gray-400 text-sm">{tx.date}</p>
+                <p className="text-warm-gray-900 font-medium">{tx.description}</p>
+                <p className="text-warm-gray-500 text-sm">{tx.date}</p>
               </div>
-              <span className={`font-semibold ${tx.amount > 0 ? 'text-green-400' : 'text-red-400'}`}>
+              <span className={`font-semibold ${tx.amount > 0 ? 'text-sage' : 'text-terracotta'}`}>
                 {tx.amount > 0 ? '+' : ''}${Math.abs(tx.amount)}
               </span>
             </div>

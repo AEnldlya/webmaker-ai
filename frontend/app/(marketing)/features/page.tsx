@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Sparkles, Search, Wand2, Rocket, CreditCard, BarChart3 } from 'lucide-react';
+import { WarmNav } from '@/components/warm-nav';
 
 const features = [
   {
@@ -39,22 +40,8 @@ const features = [
 
 export default function FeaturesPage() {
   return (
-    <div className="min-h-screen bg-gray-900">
-      <nav className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <Link href="/" className="flex items-center space-x-2">
-              <Sparkles className="h-8 w-8 text-primary-500" />
-              <span className="text-xl font-bold text-white">WebMaker AI</span>
-            </Link>
-            <div className="flex items-center space-x-4">
-              <Link href="/" className="text-gray-300 hover:text-white">Home</Link>
-              <Link href="/pricing" className="text-gray-300 hover:text-white">Pricing</Link>
-              <Link href="/login" className="text-gray-300 hover:text-white">Login</Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-cream retro-pattern">
+      <WarmNav showHome={true} showLinks={[{ label: 'Pricing', href: '/pricing' }]} />
 
       <div className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,8 +50,9 @@ export default function FeaturesPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-20"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Powerful Features</h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <span className="text-amber-600 font-medium text-sm uppercase tracking-wider">Features</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-warm-gray-900 mt-3 mb-4 font-serif">Powerful Features</h1>
+            <p className="text-xl text-warm-gray-600 max-w-2xl mx-auto">
               Everything you need to build and sell websites at scale
             </p>
           </motion.div>
@@ -76,11 +64,13 @@ export default function FeaturesPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-primary-500 transition-colors"
+                className="retro-card p-8 hover:border-amber-300 transition-colors"
               >
-                <feature.icon className="h-12 w-12 text-primary-500 mb-6" />
-                <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <div className="icon-warm-container mb-6">
+                  <feature.icon className="h-7 w-7 text-amber-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-warm-gray-900 mb-3 font-serif">{feature.title}</h3>
+                <p className="text-warm-gray-600 leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>

@@ -12,27 +12,27 @@ const mockWebsites = [
 
 const getStatusIcon = (status: string) => {
   switch (status) {
-    case 'deployed': return <CheckCircle className="h-5 w-5 text-green-500" />;
-    case 'generated': return <Clock className="h-5 w-5 text-yellow-500" />;
-    default: return <Clock className="h-5 w-5 text-gray-500" />;
+    case 'deployed': return <CheckCircle className="h-5 w-5 text-sage" />;
+    case 'generated': return <Clock className="h-5 w-5 text-amber-600" />;
+    default: return <Clock className="h-5 w-5 text-warm-gray-400" />;
   }
 };
 
 const getStatusColor = (status: string) => {
   switch (status) {
-    case 'deployed': return 'bg-green-500/20 text-green-400';
-    case 'generated': return 'bg-yellow-500/20 text-yellow-400';
-    default: return 'bg-gray-500/20 text-gray-400';
+    case 'deployed': return 'bg-sage/20 text-sage border-sage/30';
+    case 'generated': return 'bg-amber-100 text-amber-700 border-amber-200';
+    default: return 'bg-warm-gray-100 text-warm-gray-600 border-warm-gray-200';
   }
 };
 
 export default function WebsitesPage() {
   return (
-    <div className="p-8">
+    <div className="p-8 bg-cream min-h-screen">
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white">Websites</h1>
-          <p className="text-gray-400 mt-1">Manage your generated websites</p>
+          <h1 className="text-3xl font-bold text-warm-gray-900 font-serif">Websites</h1>
+          <p className="text-warm-gray-600 mt-1">Manage your generated websites</p>
         </div>
       </div>
 
@@ -43,32 +43,32 @@ export default function WebsitesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className="bg-gray-800 rounded-2xl border border-gray-700 overflow-hidden"
+            className="retro-card overflow-hidden hover:shadow-warm-lg transition-shadow duration-300"
           >
             <div className="p-6">
               <div className="flex items-start justify-between mb-4">
-                <div className="bg-primary-600/20 p-3 rounded-xl">
-                  <Globe className="h-6 w-6 text-primary-500" />
+                <div className="bg-amber-100 p-3 rounded-xl border border-amber-200">
+                  <Globe className="h-6 w-6 text-amber-600" />
                 </div>
-                <span className={`px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-1 ${getStatusColor(website.status)}`}>
+                <span className={`px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-1 border ${getStatusColor(website.status)}`}>
                   {getStatusIcon(website.status)}
                   <span className="capitalize">{website.status}</span>
                 </span>
               </div>
 
               <Link href={`/dashboard/websites/${website.id}`}>
-                <h3 className="text-xl font-semibold text-white mb-1 hover:text-primary-500">
+                <h3 className="text-xl font-semibold text-warm-gray-900 mb-1 hover:text-amber-600 transition-colors font-serif">
                   {website.business_name}
                 </h3>
               </Link>
-              <p className="text-gray-400 text-sm mb-4">{website.business_type}</p>
+              <p className="text-warm-gray-500 text-sm mb-4">{website.business_type}</p>
 
               {website.lighthouse_score && (
                 <div className="flex items-center space-x-2 mb-4">
-                  <span className="text-gray-400 text-sm">Lighthouse:</span>
+                  <span className="text-warm-gray-500 text-sm">Lighthouse:</span>
                   <span className={`font-semibold ${
-                    website.lighthouse_score >= 90 ? 'text-green-400' :
-                    website.lighthouse_score >= 70 ? 'text-yellow-400' : 'text-red-400'
+                    website.lighthouse_score >= 90 ? 'text-sage' :
+                    website.lighthouse_score >= 70 ? 'text-amber-600' : 'text-terracotta'
                   }`}>
                     {website.lighthouse_score}
                   </span>
@@ -81,7 +81,7 @@ export default function WebsitesPage() {
                     href={website.vercel_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 bg-gray-700 text-white py-2 rounded-lg text-sm font-medium hover:bg-gray-600 flex items-center justify-center space-x-1"
+                    className="flex-1 bg-warm-gray-100 text-warm-gray-700 py-2 rounded-lg text-sm font-medium hover:bg-warm-gray-200 flex items-center justify-center space-x-1 transition-colors"
                   >
                     <ExternalLink className="h-4 w-4" />
                     <span>View Live</span>
@@ -92,7 +92,7 @@ export default function WebsitesPage() {
                     href={website.github_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 bg-gray-700 text-white py-2 rounded-lg text-sm font-medium hover:bg-gray-600 flex items-center justify-center space-x-1"
+                    className="flex-1 bg-warm-gray-100 text-warm-gray-700 py-2 rounded-lg text-sm font-medium hover:bg-warm-gray-200 flex items-center justify-center space-x-1 transition-colors"
                   >
                     <Github className="h-4 w-4" />
                     <span>Code</span>

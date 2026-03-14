@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Sparkles, Check } from 'lucide-react';
+import { WarmNav } from '@/components/warm-nav';
 
 const plans = [
   {
@@ -36,21 +37,8 @@ const plans = [
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-gray-900">
-      <nav className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <Link href="/" className="flex items-center space-x-2">
-              <Sparkles className="h-8 w-8 text-primary-500" />
-              <span className="text-xl font-bold text-white">WebMaker AI</span>
-            </Link>
-            <div className="flex items-center space-x-4">
-              <Link href="/" className="text-gray-300 hover:text-white">Home</Link>
-              <Link href="/login" className="text-gray-300 hover:text-white">Login</Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-cream retro-pattern">
+      <WarmNav showHome={true} />
 
       <div className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,8 +47,9 @@ export default function PricingPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Simple Pricing</h1>
-            <p className="text-xl text-gray-400">Choose the plan that fits your needs</p>
+            <span className="text-amber-600 font-medium text-sm uppercase tracking-wider">Pricing</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-warm-gray-900 mt-3 mb-4 font-serif">Simple Pricing</h1>
+            <p className="text-xl text-warm-gray-600">Choose the plan that fits your needs</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -72,42 +61,42 @@ export default function PricingPage() {
                 transition={{ delay: i * 0.1 }}
                 className={`rounded-2xl p-8 ${
                   plan.popular
-                    ? 'bg-primary-600 border-2 border-primary-500'
-                    : 'bg-gray-800 border border-gray-700'
+                    ? 'bg-amber-600 border-2 border-amber-500 shadow-warm-lg'
+                    : 'retro-card'
                 }`}
               >
                 {plan.popular && (
-                  <span className="bg-white text-primary-600 px-3 py-1 rounded-full text-sm font-semibold">
+                  <span className="bg-warm-white text-amber-600 px-3 py-1 rounded-full text-sm font-semibold">
                     Most Popular
                   </span>
                 )}
-                <h3 className={`text-2xl font-bold mt-4 ${plan.popular ? 'text-white' : 'text-white'}`}>
+                <h3 className={`text-2xl font-bold mt-4 font-serif ${plan.popular ? 'text-white' : 'text-warm-gray-900'}`}>
                   {plan.name}
                 </h3>
-                <p className={`mt-2 ${plan.popular ? 'text-primary-100' : 'text-gray-400'}`}>
+                <p className={`mt-2 ${plan.popular ? 'text-amber-100' : 'text-warm-gray-500'}`}>
                   {plan.description}
                 </p>
                 <div className="mt-6">
-                  <span className={`text-4xl font-bold ${plan.popular ? 'text-white' : 'text-white'}`}>
+                  <span className={`text-4xl font-bold font-serif ${plan.popular ? 'text-white' : 'text-warm-gray-900'}`}>
                     {plan.price}
                   </span>
-                  <span className={plan.popular ? 'text-primary-100' : 'text-gray-400'}>
+                  <span className={plan.popular ? 'text-amber-100' : 'text-warm-gray-500'}>
                     {plan.period}
                   </span>
                 </div>
                 <ul className="mt-8 space-y-4">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-center space-x-3">
-                      <Check className={`h-5 w-5 ${plan.popular ? 'text-white' : 'text-primary-500'}`} />
-                      <span className={plan.popular ? 'text-white' : 'text-gray-300'}>{feature}</span>
+                      <Check className={`h-5 w-5 ${plan.popular ? 'text-white' : 'text-amber-600'}`} />
+                      <span className={plan.popular ? 'text-white' : 'text-warm-gray-600'}>{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <button
-                  className={`w-full mt-8 py-3 rounded-xl font-semibold ${
+                  className={`w-full mt-8 py-3 rounded-xl font-semibold transition-all duration-300 ${
                     plan.popular
-                      ? 'bg-white text-primary-600 hover:bg-gray-100'
-                      : 'bg-primary-600 text-white hover:bg-primary-700'
+                      ? 'bg-warm-white text-amber-600 hover:bg-amber-50'
+                      : 'bg-amber-600 text-white hover:bg-amber-700'
                   }`}
                 >
                   {plan.cta}
