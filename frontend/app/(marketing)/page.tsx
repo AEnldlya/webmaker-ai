@@ -160,7 +160,7 @@ export default function HomePage() {
               transition={{ delay: 0.2 }}
               className="text-warm-gray-600 text-lg max-w-2xl mx-auto"
             >
-              Click any icon to explore live websites we've built for local businesses
+              Explore fully functional demo websites built for different business types
             </motion.p>
           </div>
 
@@ -170,7 +170,7 @@ export default function HomePage() {
                 icon: Scissors, 
                 title: 'Hair Salon', 
                 desc: 'Summer Street Hair Studio',
-                url: 'https://summer-street-salon.vercel.app',
+                url: '/portfolio/salon',
                 color: 'from-rose-400 to-pink-500',
                 bgColor: 'bg-rose-50',
                 borderColor: 'border-rose-200'
@@ -179,7 +179,7 @@ export default function HomePage() {
                 icon: UtensilsCrossed, 
                 title: 'Restaurant', 
                 desc: 'Bella Vista Bistro',
-                url: 'https://example-restaurant.vercel.app',
+                url: '/portfolio/restaurant',
                 color: 'from-amber-400 to-orange-500',
                 bgColor: 'bg-amber-50',
                 borderColor: 'border-amber-200'
@@ -188,7 +188,7 @@ export default function HomePage() {
                 icon: Wrench, 
                 title: 'Plumber', 
                 desc: 'Quick Fix Plumbing',
-                url: 'https://example-plumber.vercel.app',
+                url: '/portfolio/plumber',
                 color: 'from-blue-400 to-cyan-500',
                 bgColor: 'bg-blue-50',
                 borderColor: 'border-blue-200'
@@ -197,7 +197,7 @@ export default function HomePage() {
                 icon: Stethoscope, 
                 title: 'Medical', 
                 desc: 'CareFirst Clinic',
-                url: 'https://example-medical.vercel.app',
+                url: '/portfolio/medical',
                 color: 'from-emerald-400 to-teal-500',
                 bgColor: 'bg-emerald-50',
                 borderColor: 'border-emerald-200'
@@ -206,7 +206,7 @@ export default function HomePage() {
                 icon: ShoppingBag, 
                 title: 'Retail', 
                 desc: 'Urban Boutique',
-                url: 'https://example-retail.vercel.app',
+                url: '/portfolio/retail',
                 color: 'from-violet-400 to-purple-500',
                 bgColor: 'bg-violet-50',
                 borderColor: 'border-violet-200'
@@ -215,34 +215,45 @@ export default function HomePage() {
                 icon: Coffee, 
                 title: 'Café', 
                 desc: 'Morning Brew Coffee',
-                url: 'https://example-cafe.vercel.app',
+                url: '/portfolio/cafe',
                 color: 'from-amber-600 to-yellow-500',
                 bgColor: 'bg-amber-50',
                 borderColor: 'border-amber-300'
               },
             ].map((example, i) => (
-              <motion.a
+              <motion.div
                 key={i}
-                href={example.url}
-                target="_blank"
-                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 + 0.3, duration: 0.5 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className={`${example.bgColor} ${example.borderColor} border-2 rounded-2xl p-6 text-center cursor-pointer transition-all duration-300 hover:shadow-lg group`}
               >
-                <div className={`w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br ${example.color} flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow`}>
-                  <example.icon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-lg font-semibold text-warm-gray-900 mb-1 font-serif">{example.title}</h3>
-                <p className="text-sm text-warm-gray-600">{example.desc}</p>
-                <div className="mt-3 text-xs text-amber-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                  View Live Site →
-                </div>
-              </motion.a>
+                <Link href={example.url}>
+                  <div className={`${example.bgColor} ${example.borderColor} border-2 rounded-2xl p-6 text-center cursor-pointer transition-all duration-300 hover:shadow-lg group hover:scale-105 hover:-translate-y-1`}>
+                    <div className={`w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br ${example.color} flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow`}>
+                      <example.icon className="h-8 w-8 text-white" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-warm-gray-900 mb-1 font-serif">{example.title}</h3>
+                    <p className="text-sm text-warm-gray-600">{example.desc}</p>
+                    <div className="mt-3 text-xs text-amber-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                      View Demo →
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
             ))}
           </div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="text-center mt-12"
+          >
+            <Link href="/portfolio" className="inline-flex items-center space-x-2 text-amber-600 font-semibold hover:text-amber-700 transition-colors">
+              <span>View All Examples</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </motion.div>
         </div>
       </section>
 
