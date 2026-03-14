@@ -29,13 +29,15 @@ export default function DashboardLayout({
   const pathname = usePathname();
 
   return (
-    <div className="min-h-screen bg-gray-900 flex">
+    <div className="min-h-screen bg-cream flex">
       {/* Sidebar */}
-      <aside className="w-64 bg-gray-800 border-r border-gray-700 flex flex-col">
+      <aside className="w-64 bg-warm-white border-r border-warm-gray-200 flex flex-col">
         <div className="p-6">
           <Link href="/" className="flex items-center space-x-2">
-            <Sparkles className="h-8 w-8 text-primary-500" />
-            <span className="text-xl font-bold text-white">WebMaker AI</span>
+            <div className="w-10 h-10 rounded-xl bg-amber-100 border border-amber-200 flex items-center justify-center">
+              <Sparkles className="h-5 w-5 text-amber-600" />
+            </div>
+            <span className="text-xl font-bold text-warm-gray-900 font-serif">WebMaker AI</span>
           </Link>
         </div>
 
@@ -46,23 +48,23 @@ export default function DashboardLayout({
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-colors ${
+                className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 ${
                   isActive
-                    ? 'bg-primary-600 text-white'
-                    : 'text-gray-400 hover:bg-gray-700 hover:text-white'
+                    ? 'bg-amber-100 text-amber-800 border border-amber-200'
+                    : 'text-warm-gray-600 hover:bg-warm-gray-100 hover:text-warm-gray-900'
                 }`}
               >
-                <item.icon className="h-5 w-5" />
-                <span>{item.label}</span>
+                <item.icon className={`h-5 w-5 ${isActive ? 'text-amber-600' : ''}`} />
+                <span className="font-medium">{item.label}</span>
               </Link>
             );
           })}
         </nav>
 
-        <div className="p-4 border-t border-gray-700">
-          <button className="flex items-center space-x-3 px-4 py-3 text-gray-400 hover:text-white w-full rounded-xl hover:bg-gray-700 transition-colors">
+        <div className="p-4 border-t border-warm-gray-200">
+          <button className="flex items-center space-x-3 px-4 py-3 text-warm-gray-500 hover:text-warm-gray-800 w-full rounded-xl hover:bg-warm-gray-100 transition-colors">
             <LogOut className="h-5 w-5" />
-            <span>Logout</span>
+            <span className="font-medium">Logout</span>
           </button>
         </div>
       </aside>

@@ -1,7 +1,10 @@
 import '../styles/globals.css';
 import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
 
 export const metadata = {
   title: 'WebMaker AI - Build & Sell Websites',
@@ -14,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={inter.className}>{children}</body>
+    <html lang="en">
+      <body className={`${inter.variable} antialiased`}>{children}</body>
     </html>
   );
 }

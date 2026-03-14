@@ -2,12 +2,157 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Retro Warm Palette */
+:root {
+  --cream: #faf8f5;
+  --warm-white: #fffefb;
+  --amber-50: #fffbeb;
+  --amber-100: #fef3c7;
+  --amber-200: #fde68a;
+  --amber-300: #fcd34d;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+  --amber-700: #b45309;
+  --amber-800: #92400e;
+  --amber-900: #78350f;
+  --warm-gray-50: #fafaf9;
+  --warm-gray-100: #f5f5f4;
+  --warm-gray-200: #e7e5e4;
+  --warm-gray-300: #d6d3d1;
+  --warm-gray-400: #a8a29e;
+  --warm-gray-500: #78716c;
+  --warm-gray-600: #57534e;
+  --warm-gray-700: #44403c;
+  --warm-gray-800: #292524;
+  --warm-gray-900: #1c1917;
+  --terracotta: #c65d3b;
+  --sage: #7c9a6d;
+  --dusty-rose: #c9a9a6;
+}
+
 @layer base {
   html {
     @apply scroll-smooth;
   }
   
   body {
-    @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+    @apply bg-[#faf8f5] text-[#1c1917] antialiased;
+    font-family: 'Georgia', 'Times New Roman', serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Retro Card Style */
+  .retro-card {
+    @apply bg-[#fffefb] rounded-2xl border border-[#e7e5e4] shadow-[0_4px_20px_rgba(0,0,0,0.06)];
+    box-shadow: 
+      0 4px 20px rgba(0, 0, 0, 0.06),
+      0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Warm Button Styles */
+  .btn-warm-primary {
+    @apply bg-[#d97706] text-white px-6 py-3 rounded-xl font-medium transition-all duration-300;
+    @apply hover:bg-[#b45309] hover:shadow-lg;
+    @apply active:scale-[0.98];
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  .btn-warm-secondary {
+    @apply bg-[#fffefb] text-[#78350f] px-6 py-3 rounded-xl font-medium border border-[#e7e5e4];
+    @apply hover:bg-[#fffbeb] hover:border-[#fcd34d] transition-all duration-300;
+    @apply active:scale-[0.98];
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  /* Warm Gradient Text */
+  .text-warm-gradient {
+    @apply bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#c65d3b] bg-clip-text text-transparent;
+  }
+
+  /* Retro Section Backgrounds */
+  .bg-warm-cream {
+    @apply bg-[#faf8f5];
+  }
+
+  .bg-warm-white {
+    @apply bg-[#fffefb];
+  }
+
+  .bg-warm-amber {
+    @apply bg-[#fffbeb];
+  }
+
+  /* Subtle Pattern Overlay */
+  .retro-pattern {
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(217, 119, 6, 0.03) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+
+  /* Warm Border */
+  .border-warm {
+    @apply border-[#e7e5e4];
+  }
+
+  /* Navigation Warm Style */
+  .nav-warm {
+    @apply bg-[#fffefb]/90 backdrop-blur-md border-b border-[#e7e5e4];
+  }
+
+  /* Feature Icon Container */
+  .icon-warm-container {
+    @apply w-14 h-14 rounded-2xl bg-[#fffbeb] flex items-center justify-center;
+    @apply border border-[#fde68a];
+  }
+
+  /* Warm Input Style */
+  .input-warm {
+    @apply bg-[#fffefb] border border-[#e7e5e4] rounded-xl px-4 py-3;
+    @apply focus:outline-none focus:ring-2 focus:ring-[#f59e0b]/30 focus:border-[#f59e0b];
+    @apply placeholder:text-[#a8a29e];
+  }
+
+  /* Retro Footer */
+  .footer-warm {
+    @apply bg-[#292524] text-[#e7e5e4];
+  }
+}
+
+@layer utilities {
+  /* Warm Shadow */
+  .shadow-warm {
+    box-shadow: 
+      0 4px 20px rgba(217, 119, 6, 0.08),
+      0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .shadow-warm-lg {
+    box-shadow: 
+      0 10px 40px rgba(217, 119, 6, 0.12),
+      0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Text Colors */
+  .text-warm-dark {
+    @apply text-[#1c1917];
+  }
+
+  .text-warm-medium {
+    @apply text-[#57534e];
+  }
+
+  .text-warm-light {
+    @apply text-[#78716c];
+  }
+
+  .text-amber-warm {
+    @apply text-[#d97706];
   }
 }
