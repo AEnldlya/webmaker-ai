@@ -1,0 +1,71 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+        
+    - name: Install Backend Dependencies
+      working-directory: ./backend
+      run: npm ci
+      
+    - name: Run Backend Tests
+      working-directory: ./backend
+      run: npm test
+      
+    - name: Install Frontend Dependencies
+      working-directory: ./frontend
+      run: npm ci
+      
+    - name: Build Frontend
+      working-directory: ./frontend
+      run: npm run build
+
+  deploy-backend:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Deploy to Production
+      run: |
+        echo "Deploying backend..."
+        # Add your deployment commands here
+
+  deploy-frontend:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install Vercel CLI
+      run: npm install --global vercel@latest
+      
+    - name: Pull Vercel Environment
+      working-directory: ./frontend
+      run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      
+    - name: Build Project
+      working-directory: ./frontend
+      run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      
+    - name: Deploy to Vercel
+      working-directory: ./frontend
+      run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
