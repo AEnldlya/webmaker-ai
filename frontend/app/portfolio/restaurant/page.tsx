@@ -331,7 +331,7 @@ export default function RestaurantDemo() {
                   </div>
                   <div>
                     <p className="font-semibold">Location</p>
-                    <p className="text-stone-400">456 Hanover Street, Boston, MA 02113</p>
+                    <p className="text-stone-400">123 Summer Street, Boston, MA 02110</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
