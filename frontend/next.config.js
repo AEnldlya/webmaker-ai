@@ -13,6 +13,10 @@ const nextConfig = {
       },
     ];
   },
+  // Force Vercel to use Node.js 18+
+  experimental: {
+    forceSwcTransforms: true,
+  },
 };
 
 module.exports = nextConfig;
